@@ -9,6 +9,7 @@ import { CovalentMarkdownModule } from '@covalent/markdown';
 import { AppComponent } from './app.component';
 import { RequestInterceptor } from '../config/interceptors/request.interceptor';
 import { MOCK_API } from '../config/api.config';
+import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
 
 import { routedComponents, AppRoutingModule } from './app-routing.module';
 
@@ -41,6 +42,7 @@ export function getAPI(): string {
     }),
     CovalentHighlightModule,
     CovalentMarkdownModule,
+    CovalentDynamicFormsModule
   ], // modules needed to run this module
   providers: [
     httpInterceptorProviders,
