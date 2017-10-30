@@ -10,12 +10,18 @@ import { AppComponent } from './app.component';
 import { RequestInterceptor } from '../config/interceptors/request.interceptor';
 import { MOCK_API } from '../config/api.config';
 import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
+import {
+  CovalentChipsModule, CovalentDialogsModule, CovalentLayoutModule, CovalentLoadingModule, CovalentMenuModule,
+  CovalentNotificationsModule,
+  CovalentSearchModule, CovalentStepsModule
+} from '@covalent/core';
 
 import { routedComponents, AppRoutingModule } from './app-routing.module';
 
 import { SharedModule } from './shared/shared.module';
 
 import { USER_PROVIDER, USERS_API } from './users';
+import {FormControl} from "@angular/forms";
 
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -28,21 +34,31 @@ export function getAPI(): string {
 @NgModule({
   declarations: [
     AppComponent,
+    // MatAutocompleteModule,
     routedComponents,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
+    FormControl,
     SharedModule,
     CovalentHttpModule.forRoot({
       interceptors: [{
         interceptor: RequestInterceptor, paths: ['**'],
       }],
     }),
+    CovalentChipsModule,
     CovalentHighlightModule,
     CovalentMarkdownModule,
-    CovalentDynamicFormsModule
+    CovalentDynamicFormsModule,
+    CovalentSearchModule,
+    CovalentDialogsModule,
+    CovalentLayoutModule,
+    CovalentLoadingModule,
+    CovalentMenuModule,
+    CovalentStepsModule,
+    CovalentNotificationsModule
   ], // modules needed to run this module
   providers: [
     httpInterceptorProviders,

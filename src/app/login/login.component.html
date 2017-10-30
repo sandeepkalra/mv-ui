@@ -1,3 +1,41 @@
-<p>
-  login works!
-</p>
+<md-card style="max-width: 400px">
+  <md-card-title>Login</md-card-title>
+  <md-card-content>
+      <form layout="column">
+      <md-input-container>
+        <input mdInput
+               #emailElement
+               #emailControl="ngModel"
+               type="text"
+               placeholder="Email"
+               [(ngModel)]="email"
+               name="email"
+               maxlength="30"
+               pattern="^[a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,15})$"
+               required>
+
+      </md-input-container>
+
+      <md-input-container>
+        <input mdInput
+               #passElement
+               #passControl="ngModel"
+               placeholder="Password"
+               type="password"
+               name="password"
+               minlength="3"
+               [(ngModel)]="password"
+               required>
+      </md-input-container>
+
+
+
+        <button  md-raised-button  (click)="ProcessLoginForm()">Login</button>
+
+      </form>
+
+
+
+  </md-card-content>
+</md-card>
+
