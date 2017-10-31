@@ -11,5 +11,10 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit() {
   }
-
+  TakeToForgotPinAndPassword() {
+    console.log("TakeToForgotPinAndPassword")
+  }
+  ResetPassword() {
+    console.log("ResetPassword")
+  }
 }

@@ -9,6 +9,8 @@ import {FooterComponent} from "./footer/footer.component";
 import {ItemsComponent} from "./items/items.component";
 import {SignupComponent} from "./signup/signup.component";
 import {SignupCompleteComponent} from "./signup-complete/signup-complete.component";
+import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
+import {ForgotMyPinComponent} from "./forgot-my-pin/forgot-my-pin.component";
 
 const routes: Routes = [
   {
@@ -18,6 +20,14 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent
+  },
+  {
+    path:'forgot-my-pin',
+    component: ForgotMyPinComponent
   },
   {
     path: '',
@@ -44,6 +54,8 @@ export const routedComponents: any[] = [
   MainComponent,
   SignupComponent,
   SignupCompleteComponent,
+  ForgotPasswordComponent,
+  ForgotMyPinComponent,
   LoginComponent,
   DashboardComponent,
   HeaderComponent,

@@ -21,7 +21,7 @@ import { routedComponents, AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 
 import { USER_PROVIDER, USERS_API } from './users';
-import {FormControl} from "@angular/forms";
+import { ForgotMyPinComponent } from './forgot-my-pin/forgot-my-pin.component';
 
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -36,12 +36,12 @@ export function getAPI(): string {
     AppComponent,
     // MatAutocompleteModule,
     routedComponents,
+    ForgotMyPinComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    FormControl,
     SharedModule,
     CovalentHttpModule.forRoot({
       interceptors: [{

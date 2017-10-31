@@ -1,3 +1,106 @@
-<p>
-  signup works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12"></div>
+  </div>
+  <div class="row">
+    <div class="col-7"></div>
+    <div class="col-4">
+      <md-card>
+        <md-card-title>Signup</md-card-title>
+        <md-card-content>
+          <form layout="column">
+            <md-input-container>
+              <input mdInput
+                     #emailElement
+                     #emailControl="ngModel"
+                     type="text"
+                     placeholder="Email"
+                     [(ngModel)]="email"
+                     name="email"
+                     maxlength="30"
+                     pattern="^[a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,15})$"
+                     required>
+            </md-input-container>
+
+            <md-input-container>
+              <input mdInput
+                     #passElement
+                     #passControl="ngModel"
+                     placeholder="Password"
+                     type="password"
+                     name="password"
+                     minlength="3"
+                     [(ngModel)]="password"
+                     required>
+            </md-input-container>
+
+            <md-input-container>
+              <input mdInput
+                     #passElement
+                     #passControl="ngModel"
+                     placeholder="4 Digit Secret Pin"
+                     type="number"
+                     name="digit_lock"
+                     minlength="4"
+                     maxlength="4"
+                     [(ngModel)]="digit_lock"
+                     required>
+            </md-input-container>
+
+            <md-input-container>
+              <input mdInput
+                     #FirstNameElement
+                     #FirstNameControl="ngModel"
+                     placeholder="FirstName"
+                     type="text"
+                     name="firstname"
+                     minlength="4"
+                     [(ngModel)]="firstname"
+                     required>
+            </md-input-container>
+
+            <md-input-container>
+              <input mdInput
+                     #LastNameElement
+                     #LastNameControl="ngModel"
+                     placeholder="LastName"
+                     type="text"
+                     name="lastname"
+                     minlength="4"
+                     [(ngModel)]="lastname"
+                     required>
+            </md-input-container>
+
+            <md-input-container>
+              <input mdInput
+                     #DOBControl="ngModel"
+                     placeholder="DOB"
+                     type="date"
+                     name="dob"
+                     minlength="4"
+                     [(ngModel)]="dob"
+              required>
+            </md-input-container>
+
+            <label>By Checking the box below, I agree to the Term and Conditions of use.</label>
+            <td-dynamic-checkbox
+              #TermsControl="ngModel"
+              placeholder="Terms And Conditions"
+              name="terms_and_conditions"
+              [ngModel]="terms_and_conditions" required>
+            </td-dynamic-checkbox>
+
+
+            <button md-raised-button (click)="ProcessSignupForm()">Signup</button>
+
+          </form>
+
+
+        </md-card-content>
+      </md-card>
+
+
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
