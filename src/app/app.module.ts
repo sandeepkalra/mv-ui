@@ -22,6 +22,11 @@ import { SharedModule } from './shared/shared.module';
 
 import { USER_PROVIDER, USERS_API } from './users';
 import { ForgotMyPinComponent } from './forgot-my-pin/forgot-my-pin.component';
+import { NotLoggedInYetComponent } from './not-logged-in-yet/not-logged-in-yet.component';
+import { LoggedInComponent } from './logged-in/logged-in.component';
+import { LogoutComponent } from './logout/logout.component';
+import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
+import { FaqsComponent } from './faqs/faqs.component';
 
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -37,6 +42,11 @@ export function getAPI(): string {
     // MatAutocompleteModule,
     routedComponents,
     ForgotMyPinComponent,
+    NotLoggedInYetComponent,
+    LoggedInComponent,
+    LogoutComponent,
+    TermsAndConditionsComponent,
+    FaqsComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     AppRoutingModule,

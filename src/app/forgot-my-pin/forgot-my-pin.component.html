@@ -1,3 +1,62 @@
-<p>
-  forgot-my-pin works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12"></div>
+  </div>
+  <div class="row">
+    <div class="col-7"></div>
+    <div class="col-4">
+      <md-card>
+        <md-card-title> Reset Password </md-card-title>
+        <md-card-content>
+          <form layout="column">
+            <md-input-container>
+              <input mdInput
+                     #emailElement
+                     #emailControl="ngModel"
+                     type="text"
+                     placeholder="Email"
+                     [(ngModel)]="email"
+                     name="email"
+                     maxlength="30"
+                     pattern="^[a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,15})$"
+                     required>
+            </md-input-container>
+
+            <md-input-container>
+              <input mdInput
+                     #passElement
+                     #passControl="ngModel"
+                     placeholder="Password"
+                     type="new_password"
+                     name="new_password"
+                     minlength="3"
+                     [(ngModel)]="password"
+                     required>
+            </md-input-container>
+
+            <md-input-container>
+              <input mdInput
+                     #passElement
+                     #passControl="ngModel"
+                     placeholder="New 4 Digit Secret Pin"
+                     type="number"
+                     name="new_digit_lock"
+                     minlength="4"
+                     maxlength="4"
+                     [(ngModel)]="digit_lock"
+                     required>
+            </md-input-container>
+
+          </form>
+
+          <button md-raised-button (click)="ResetPin()">Reset 4 Digit Pin</button>
+
+        </md-card-content>
+      </md-card>
+
+
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
+
