@@ -27,6 +27,10 @@ import { LoggedInComponent } from './logged-in/logged-in.component';
 import { LogoutComponent } from './logout/logout.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { FaqsComponent } from './faqs/faqs.component';
+import { SearchVoicesComponent } from './search-voices/search-voices.component';
+import { RegisterMyVoiceComponent } from './register-my-voice/register-my-voice.component';
+import { RegisterMyItemComponent } from './register-my-item/register-my-item.component';
+import { ManageItemsComponent } from './manage-items/manage-items.component';
 
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -47,6 +51,10 @@ export function getAPI(): string {
     LogoutComponent,
     TermsAndConditionsComponent,
     FaqsComponent,
+    SearchVoicesComponent,
+    RegisterMyVoiceComponent,
+    RegisterMyItemComponent,
+    ManageItemsComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     AppRoutingModule,

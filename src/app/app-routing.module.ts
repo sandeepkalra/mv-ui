@@ -6,7 +6,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import {HeaderComponent} from "./header/header.component";
 import {FooterComponent} from "./footer/footer.component";
-import {ItemsComponent} from "./items/items.component";
 import {SignupComponent} from "./signup/signup.component";
 import {SignupCompleteComponent} from "./signup-complete/signup-complete.component";
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
@@ -16,6 +15,11 @@ import {LoggedInComponent} from "./logged-in/logged-in.component";
 import {LogoutComponent} from "./logout/logout.component";
 import {TermsAndConditionsComponent} from "./terms-and-conditions/terms-and-conditions.component";
 import {FaqsComponent} from "./faqs/faqs.component";
+import {SearchVoicesComponent} from "./search-voices/search-voices.component";
+import {ManageItemsComponent} from "./manage-items/manage-items.component";
+import {RegisterMyItemComponent} from "./register-my-item/register-my-item.component";
+import {RegisterMyVoiceComponent} from "./register-my-voice/register-my-voice.component";
+import {UsersComponent} from "./users/users.component";
 
 const routes: Routes = [
   {
@@ -32,9 +36,19 @@ const routes: Routes = [
     path: '1',
     component: LoggedInComponent,
     children: [
+      { path: 'home', component: MainComponent},
+      { path: 'my-dashboard', component:DashboardComponent},
       { path: 'logout', component: LogoutComponent},
-      { path: '', redirectTo: 'login', pathMatch:'full' },
+      { path: 'search' , component: SearchVoicesComponent},
+      { path: 'add-my-voice' , component: RegisterMyVoiceComponent},
+      { path: 'add-items' , component: RegisterMyItemComponent},
+      { path: 'manage-items' , component: ManageItemsComponent},
+      { path: '', redirectTo: 'home', pathMatch:'full'}
+
   ]},
+  {
+    path:'signup-complete', component:SignupCompleteComponent
+  },
   {
     path:'terms-and-conditions',
     component: TermsAndConditionsComponent
@@ -44,14 +58,7 @@ const routes: Routes = [
     component:FaqsComponent
   },
   {
-    path: '',
-    component: MainComponent,
-    children: [
-      {
-        component: DashboardComponent,
-        path: '',
-      }
-      ]
+    path:'', component: UsersComponent
   }
 ];
 
@@ -67,9 +74,14 @@ export class AppRoutingModule { }
 export const routedComponents: any[] = [
   MainComponent,
   SignupComponent,
+  UsersComponent,
   SignupCompleteComponent,
   ForgotPasswordComponent,
   NotLoggedInYetComponent,
+  SearchVoicesComponent,
+  ManageItemsComponent,
+  RegisterMyItemComponent,
+  RegisterMyVoiceComponent,
   FaqsComponent,
   TermsAndConditionsComponent,
   LoggedInComponent,
@@ -79,5 +91,4 @@ export const routedComponents: any[] = [
   DashboardComponent,
   HeaderComponent,
   FooterComponent,
-  ItemsComponent
 ];

@@ -79,7 +79,7 @@
                      name="dob"
                      minlength="4"
                      [(ngModel)]="dob"
-              required>
+                     required>
             </md-input-container>
 
             <label>By Checking the box below, I agree to the Term and Conditions of use.</label>
@@ -89,7 +89,6 @@
               name="terms_and_conditions"
               [ngModel]="terms_and_conditions" required>
             </td-dynamic-checkbox>
-
 
             <button md-raised-button (click)="ProcessSignupForm()">Signup</button>
 

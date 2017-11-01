@@ -1,3 +1,51 @@
-<p>
-  signup-complete works!
-</p>
+<
+<div class="container">
+  <div class="row">
+    <div class="col-12"></div>
+  </div>
+  <div class="row">
+    <div class="col-7"></div>
+    <div class="col-4">
+      <md-card>
+        <md-card-title>Signup Complete</md-card-title>
+        <md-card-content>
+          <form layout="column">
+            <md-input-container>
+              <input mdInput
+                     #emailElement
+                     #emailControl="ngModel"
+                     type="text"
+                     placeholder="Email"
+                     [(ngModel)]="email"
+                     name="email"
+                     maxlength="30"
+                     pattern="^[a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,15})$"
+                     required>
+            </md-input-container>
+
+
+            <md-input-container>
+              <input mdInput
+                     #passElement
+                     #passControl="ngModel"
+                     placeholder="Token"
+                     type="text"
+                     name="toekn"
+                     [(ngModel)]="token"
+                     required>
+            </md-input-container>
+
+
+            <button md-raised-button (click)="ProcessSignupCompleteForm()">Complete My Signup</button>
+
+          </form>
+
+
+        </md-card-content>
+      </md-card>
+
+
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>

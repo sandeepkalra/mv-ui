@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="row">
+    <td-search-input placeholder="Search here" [showUnderline]="true"
+                     [debounce]="500" (searchDebounce)="searchInputTerm = $event"
+                     (search)="searchInputTerm = $event" (clear)="searchInputTerm = ''">
+    </td-search-input>
+  </div>
+</div>
