@@ -1,10 +1,18 @@
 import { NgModule, Type } from '@angular/core';
+
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 import { BrowserModule, Title }  from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CovalentHttpModule, IHttpInterceptor } from '@covalent/http';
 import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
+
+import { MdSnackBarModule, MdIconModule, MdListModule, MdTooltipModule, MdCardModule, MdButtonModule,
+  MdToolbarModule, MdInputModule, MdSlideToggleModule, MdMenuModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { RequestInterceptor } from '../config/interceptors/request.interceptor';
@@ -31,6 +39,7 @@ import { SearchVoicesComponent } from './search-voices/search-voices.component';
 import { RegisterMyVoiceComponent } from './register-my-voice/register-my-voice.component';
 import { RegisterMyItemComponent } from './register-my-item/register-my-item.component';
 import { ManageItemsComponent } from './manage-items/manage-items.component';
+import { ForgotPasswordAndPinComponent } from './forgot-password-and-pin/forgot-password-and-pin.component';
 
 const httpInterceptorProviders: Type<any>[] = [
   RequestInterceptor,
@@ -55,9 +64,13 @@ export function getAPI(): string {
     RegisterMyVoiceComponent,
     RegisterMyItemComponent,
     ManageItemsComponent,
+    ForgotPasswordAndPinComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     AppRoutingModule,
+    CommonModule,
+    FormsModule,
+    RouterModule,
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
@@ -66,6 +79,16 @@ export function getAPI(): string {
         interceptor: RequestInterceptor, paths: ['**'],
       }],
     }),
+    MdSnackBarModule,
+    MdIconModule,
+    MdListModule,
+    MdTooltipModule,
+    MdCardModule,
+    MdButtonModule,
+    MdToolbarModule,
+    MdInputModule,
+    MdSlideToggleModule,
+    MdMenuModule,
     CovalentChipsModule,
     CovalentHighlightModule,
     CovalentMarkdownModule,

@@ -8,7 +8,7 @@
       <md-card>
         <md-card-title>Signup</md-card-title>
         <md-card-content>
-          <form layout="column">
+          <form #userForm="ngForm" layout="column">
             <md-input-container>
               <input mdInput
                      #emailElement
@@ -21,6 +21,12 @@
                      pattern="^[a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,15})$"
                      required>
             </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="emailControl.pristine" class="tc-red-600">
+                  <span [hidden]="!emailControl.hasError('required')">Required</span>
+                  <span [hidden]="!emailControl.hasError('pattern')">incorrect pattern</span>
+                </span>
+            </md-hint>
 
             <md-input-container>
               <input mdInput
@@ -29,23 +35,35 @@
                      placeholder="Password"
                      type="password"
                      name="password"
-                     minlength="3"
+                     minlength="5"
                      [(ngModel)]="password"
                      required>
             </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="passControl.pristine" class="tc-red-600">
+                  <span [hidden]="!passControl.hasError('required')">Password Required</span>
+                  <span [hidden]="!passControl.hasError('minlength')">Length too small, min 5. Your's is {{passElement.value.length}}.</span>
+                </span>
+            </md-hint>
 
             <md-input-container>
               <input mdInput
-                     #passElement
-                     #passControl="ngModel"
+                     #digitElement
+                     #digitControl="ngModel"
                      placeholder="4 Digit Secret Pin"
                      type="number"
                      name="digit_lock"
-                     minlength="4"
-                     maxlength="4"
                      [(ngModel)]="digit_lock"
                      required>
             </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="digitControl.pristine" class="tc-red-600">
+                  <span [hidden]="!digitControl.hasError('required')">4 Digits Required</span>
+                  <span [hidden]="!(digitElement.value.length != 4 )">
+                    Length  must be 4. Your's is {{digitElement.value.length}}.
+                  </span>
+                </span>
+            </md-hint>
 
             <md-input-container>
               <input mdInput
@@ -58,6 +76,12 @@
                      [(ngModel)]="firstname"
                      required>
             </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="FirstNameControl.pristine" class="tc-red-600">
+                  <span [hidden]="!FirstNameControl.hasError('required')">First Name Required</span>
+                </span>
+            </md-hint>
+
 
             <md-input-container>
               <input mdInput
@@ -70,9 +94,15 @@
                      [(ngModel)]="lastname"
                      required>
             </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="LastNameControl.pristine" class="tc-red-600">
+                  <span [hidden]="!LastNameControl.hasError('required')">Last Name Required</span>
+                </span>
+            </md-hint>
 
             <md-input-container>
               <input mdInput
+                     #DOBElement
                      #DOBControl="ngModel"
                      placeholder="DOB"
                      type="date"
@@ -81,16 +111,30 @@
                      [(ngModel)]="dob"
                      required>
             </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="DOBControl.pristine" class="tc-red-600">
+                  <span [hidden]="!DOBControl.hasError('required')">Last Name Required</span>
+                </span>
+            </md-hint>
 
             <label>By Checking the box below, I agree to the Term and Conditions of use.</label>
+            <mat-slide-toggle></mat-slide-toggle>
             <td-dynamic-checkbox
+              #TermElement
               #TermsControl="ngModel"
               placeholder="Terms And Conditions"
               name="terms_and_conditions"
-              [ngModel]="terms_and_conditions" required>
+              [ngModel]="terms_and_conditions"
+              required>
             </td-dynamic-checkbox>
+            <md-hint align="start">
+                <span [hidden]="TermsControl.pristine" class="tc-red-600">
+                  <span [hidden]="TermElement.value == true">Must Agree To Terms of Use</span>
+                </span>
+            </md-hint>
 
-            <button md-raised-button (click)="ProcessSignupForm()">Signup</button>
+            <button [disabled]="!userForm.form.valid" color="primary"
+              md-raised-button (click)="ProcessSignupForm()">Signup</button>
 
           </form>
 
