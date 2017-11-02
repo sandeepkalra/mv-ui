@@ -117,8 +117,7 @@
                 </span>
             </md-hint>
 
-            <label>By Checking the box below, I agree to the Term and Conditions of use.</label>
-            <mat-slide-toggle></mat-slide-toggle>
+            <label>By Checking the box below, I agree to the <a href="/terms-and-conditions"> Term and Conditions </a>of use.</label>
             <td-dynamic-checkbox
               #TermElement
               #TermsControl="ngModel"
@@ -134,8 +133,7 @@
             </md-hint>
 
             <button [disabled]="!userForm.form.valid" color="primary"
-              md-raised-button (click)="ProcessSignupForm()">Signup</button>
-
+            md-raised-button (click)="ProcessSignupForm()">Signup</button>
           </form>
 
 

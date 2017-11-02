@@ -52,19 +52,7 @@ export function getAPI(): string {
 @NgModule({
   declarations: [
     AppComponent,
-    // MatAutocompleteModule,
     routedComponents,
-    ForgotMyPinComponent,
-    NotLoggedInYetComponent,
-    LoggedInComponent,
-    LogoutComponent,
-    TermsAndConditionsComponent,
-    FaqsComponent,
-    SearchVoicesComponent,
-    RegisterMyVoiceComponent,
-    RegisterMyItemComponent,
-    ManageItemsComponent,
-    ForgotPasswordAndPinComponent,
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     AppRoutingModule,

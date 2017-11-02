@@ -14,7 +14,7 @@ export class SignupComponent implements OnInit {
   }
 
   ProcessSignupForm() {
-    console.log("ProcessSignupForm")
+    console.log("ProcessSignupForm");
   }
 
 }
