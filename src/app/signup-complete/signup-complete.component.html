@@ -26,17 +26,17 @@
 
             <md-input-container>
               <input mdInput
-                     #passElement
-                     #passControl="ngModel"
+                     #tokenElement
+                     #tokenControl="ngModel"
                      placeholder="Token"
                      type="text"
-                     name="toekn"
+                     name="token"
                      [(ngModel)]="token"
                      required>
             </md-input-container>
 
 
-            <button md-raised-button (click)="ProcessSignupCompleteForm()">Complete My Signup</button>
+            <button md-raised-button (click)="ProcessSignupCompleteForm(emailElement.value, tokenElement.value )">Complete My Signup</button>
 
           </form>
 

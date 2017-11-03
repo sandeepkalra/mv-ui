@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TdDialogService, TdLoadingService } from '@covalent/core';
+
+import 'rxjs/add/operator/toPromise';
+import {ServerConnectService} from "../server-connect-service/server-connect.service";
 
 @Component({
   selector: 'app-signup-complete',
@@ -7,9 +12,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupCompleteComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router,
+              private _route: ActivatedRoute,
+              private _dialogService: TdDialogService,
+              private _loadingService: TdLoadingService,
+              private _postService:ServerConnectService) { }
 
   ngOnInit() {
   }
 
+  ProcessSignupCompleteForm(email:string, token:string) {
+    this._postService.POST('/auth/validate_token',
+      {email: email,
+        token: token
+      })
+      .subscribe(data => {
+        console.log(data);
+        if (data.code == 0) {
+          this._router.navigate(['/1']);
+        }
+        else {
+          this._dialogService.openAlert({title: 'Error singup Complete.', message: " msg : " + data.message});
+        }
+      })
+  }
 }

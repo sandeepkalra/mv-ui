@@ -133,7 +133,9 @@
             </md-hint>
 
             <button [disabled]="!userForm.form.valid" color="primary"
-            md-raised-button (click)="ProcessSignupForm()">Signup</button>
+            md-raised-button (click)="ProcessSignupForm(emailElement.value, passElement.value,
+            digitElement.value, DOBElement.value, FirstNameElement.value, LastNameElement.value,
+            TermElement.value)">Signup</button>
           </form>
 
 
