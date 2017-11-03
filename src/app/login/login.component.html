@@ -51,7 +51,7 @@
               <md-divider></md-divider>
               <!--<md-card-actions>-->
               <button [disabled]="!userForm.form.valid" color="primary"
-                      md-raised-button (click)="ProcessLoginForm()">Login
+                      md-raised-button (click)="ProcessLoginForm(emailElement.value,passElement.value)">Login
               </button>
               <!--</md-card-actions>-->
 
