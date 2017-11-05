@@ -21,6 +21,8 @@ import {RegisterMyItemComponent} from "./register-my-item/register-my-item.compo
 import {RegisterMyVoiceComponent} from "./register-my-voice/register-my-voice.component";
 import {UsersComponent} from "./users/users.component";
 import {ForgotPasswordAndPinComponent} from "./forgot-password-and-pin/forgot-password-and-pin.component";
+import { ChangeOldPasswordComponent } from './change-old-password/change-old-password.component';
+import { ChangeOldPinComponent } from './change-old-pin/change-old-pin.component';
 
 const routes: Routes = [
   {
@@ -46,6 +48,8 @@ const routes: Routes = [
       { path: 'add-items' , component: RegisterMyItemComponent},
       { path: 'manage-items' , component: ManageItemsComponent},
       { path: 'logout', component: LogoutComponent},
+      { path: 'change-old-password', component: ChangeOldPasswordComponent},
+      { path: 'change-old-pin', component: ChangeOldPinComponent},
       { path: '', redirectTo: 'home', pathMatch:'full'}
 
   ]},
@@ -81,6 +85,8 @@ export const routedComponents: any[] = [
   SignupCompleteComponent,
   ForgotPasswordAndPinComponent,
   ForgotPasswordComponent,
+  ChangeOldPasswordComponent,
+  ChangeOldPinComponent,
   NotLoggedInYetComponent,
   SearchVoicesComponent,
   ManageItemsComponent,

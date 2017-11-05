@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12"></div>
+  </div>
+  <div class="row">
+    <div class="col-7"></div>
+    <div class="col-4">
+      <md-card>
+        <md-card-title> Change Existing 4Digit Pin </md-card-title>
+        <md-card-content>
+          <form #userForm="ngForm"  layout="column">
+            <md-input-container>
+              <input mdInput
+                     #emailElement
+                     #emailControl="ngModel"
+                     type="text"
+                     placeholder="Email"
+                     [(ngModel)]="email"
+                     name="email"
+                     maxlength="30"
+                     pattern="^[a-zA-Z0-9]+(\.[_a-zA-Z0-9]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,15})$"
+                     required>
+            </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="emailControl.pristine" class="tc-red-600">
+                  <span [hidden]="!emailControl.hasError('required')">Required</span>
+                  <span [hidden]="!emailControl.hasError('pattern')">incorrect pattern</span>
+                </span>
+            </md-hint>
+
+            <md-input-container>
+              <input mdInput
+                     #oldDigitElement
+                     #oldDigitControl="ngModel"
+                     placeholder="4 Digit Secret Pin"
+                     type="number"
+                     name="old_digit_lock"
+                     minlength="4"
+                     maxlength="4"
+                     [(ngModel)]="old_digit_lock"
+                     required>
+            </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="oldDigitControl.pristine" class="tc-red-600">
+                  <span [hidden]="!oldDigitControl.hasError('required')">4 Digits Required</span>
+                  <span [hidden]="!(oldDigitElement.value.length != 4 )">
+                    Length  must be 4. Your's is {{oldDigitElement.value.length}}.
+                  </span>
+                </span>
+            </md-hint>
+
+
+
+            <md-input-container>
+              <input mdInput
+                     #newDigitElement
+                     #newDigitControl="ngModel"
+                     placeholder="4 Digit Secret Pin"
+                     type="number"
+                     name="new_digit_lock"
+                     minlength="4"
+                     maxlength="4"
+                     [(ngModel)]="new_digit_lock"
+                     required>
+            </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="newDigitControl.pristine" class="tc-red-600">
+                  <span [hidden]="!newDigitControl.hasError('required')">4 Digits Required</span>
+                  <span [hidden]="!(newDigitElement.value.length != 4 )">
+                    Length  must be 4. Your's is {{newDigitElement.value.length}}.
+                  </span>
+                </span>
+            </md-hint>
+
+
+            <button [disabled]="!userForm.form.valid" color="primary"
+                    md-raised-button (click)="ChangeOldPin(emailElement.value, oldDigitElement.value, newDigitElement.value)">Reset Password</button>
+          </form>
+
+
+        </md-card-content>
+      </md-card>
+
+
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>
