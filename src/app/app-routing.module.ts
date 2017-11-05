@@ -45,6 +45,7 @@ const routes: Routes = [
       { path: 'add-my-voice' , component: RegisterMyVoiceComponent},
       { path: 'add-items' , component: RegisterMyItemComponent},
       { path: 'manage-items' , component: ManageItemsComponent},
+      { path: 'logout', component: LogoutComponent},
       { path: '', redirectTo: 'home', pathMatch:'full'}
 
   ]},

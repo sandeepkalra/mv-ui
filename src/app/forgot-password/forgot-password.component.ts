@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TdDialogService, TdLoadingService } from '@covalent/core';
 
+import 'rxjs/add/operator/toPromise';
+import {ServerConnectService} from "../server-connect-service/server-connect.service";
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
@@ -7,14 +11,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotPasswordComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router,
+              private _route: ActivatedRoute,
+              private _dialogService: TdDialogService,
+              private _loadingService: TdLoadingService,
+              private _postService:ServerConnectService) { }
 
   ngOnInit() {
   }
-  TakeToForgotPinAndPassword() {
-    console.log("TakeToForgotPinAndPassword")
-  }
-  ResetPassword() {
-    console.log("ResetPassword")
+
+  ResetPassword(email, digitlock, new_password) {
+    console.log("ResetPassword");
+    this._postService.POST("/auth/reset_password",{
+      "email": email,
+      "new_password": new_password,
+      "digit_lock": digitlock
+    }).subscribe(data=>{
+      console.log(data);
+      if (data.code == 0) {
+        this._router.navigate(['/0'])
+      }
+    })
   }
 }

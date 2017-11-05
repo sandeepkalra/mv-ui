@@ -33,7 +33,7 @@
                      #passElement
                      #passControl="ngModel"
                      placeholder="Password"
-                     type="new_password"
+                     type="password"
                      name="new_password"
                      minlength="5"
                      [(ngModel)]="password"
@@ -71,7 +71,7 @@
 
 
             <button [disabled]="!userForm.form.valid" color="primary"
-                    md-raised-button (click)="ResetPin()">Reset 4 Digit Pin</button>
+                    md-raised-button (click)="ResetPin(emailElement.value, passElement.value, digitElement.value)">Reset 4 Digit Pin</button>
           </form>
 
         </md-card-content>

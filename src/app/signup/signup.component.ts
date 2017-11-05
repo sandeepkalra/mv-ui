@@ -35,7 +35,7 @@ export class SignupComponent implements OnInit {
             date_of_birth: new Date(DOBElement),
             first_name: firstNameElement,
             last_name: lastNameElement,
-            four_digit_lock: parseInt(digitElement),
+            four_digit_lock: digitElement,
             is_blocked: !termsElement
           })
         .subscribe(data => {
