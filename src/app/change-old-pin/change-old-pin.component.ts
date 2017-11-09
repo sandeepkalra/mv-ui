@@ -4,6 +4,7 @@ import { TdDialogService, TdLoadingService } from '@covalent/core';
 
 import 'rxjs/add/operator/toPromise';
 import {ServerConnectService} from "../server-connect-service/server-connect.service";
+import {server_auth_url} from "../common/project";
 @Component({
   selector: 'app-change-old-pin',
   templateUrl: './change-old-pin.component.html',
@@ -21,7 +22,7 @@ export class ChangeOldPinComponent implements OnInit {
   }
 
   ChangeOldPin(email, old_digit_lock, new_digit_lock) {
-    this._postService.POST("/auth/change_old_digit_lock",{
+    this._postService.POST(server_auth_url, "/auth/change_old_digit_lock",{
       "email":email,
       "old_digit_lock":old_digit_lock,
       "new_digit_lock": new_digit_lock

@@ -4,6 +4,7 @@ import { TdDialogService, TdLoadingService } from '@covalent/core';
 
 import 'rxjs/add/operator/toPromise';
 import {ServerConnectService} from "../server-connect-service/server-connect.service";
+import {server_auth_url} from "../common/project";
 @Component({
   selector: 'app-logout',
   templateUrl: './logout.component.html',
@@ -24,7 +25,7 @@ export class LogoutComponent implements OnInit {
   }
 
   Logout() {
-    this._postService.POST("/auth/logout",{}).subscribe(data=>{
+    this._postService.POST(server_auth_url, "/auth/logout",{}).subscribe(data=>{
       console.log(data);
       if (data.code == 0) {
         this._router.navigate(['/0'])

@@ -4,6 +4,7 @@ import { TdDialogService, TdLoadingService } from '@covalent/core';
 
 import 'rxjs/add/operator/toPromise';
 import {ServerConnectService} from "../server-connect-service/server-connect.service";
+import {server_auth_url} from "../common/project";
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
@@ -22,7 +23,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   ResetPassword(email, digitlock, new_password) {
     console.log("ResetPassword");
-    this._postService.POST("/auth/reset_password",{
+    this._postService.POST(server_auth_url, "/auth/reset_password",{
       "email": email,
       "new_password": new_password,
       "digit_lock": digitlock

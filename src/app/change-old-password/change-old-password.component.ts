@@ -4,6 +4,7 @@ import { TdDialogService, TdLoadingService } from '@covalent/core';
 
 import 'rxjs/add/operator/toPromise';
 import {ServerConnectService} from "../server-connect-service/server-connect.service";
+import {server_auth_url} from "../common/project";
 
 @Component({
   selector: 'app-change-old-password',
@@ -22,7 +23,7 @@ export class ChangeOldPasswordComponent implements OnInit {
   }
 
   ChangeOldPassword(email, old_password, new_password) {
-    this._postService.POST("/auth/change_old_password",{
+    this._postService.POST(server_auth_url, "/auth/change_old_password",{
       "email":email,
       "old_password": old_password,
       "new_password":new_password

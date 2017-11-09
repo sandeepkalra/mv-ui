@@ -4,6 +4,7 @@ import { TdDialogService, TdLoadingService } from '@covalent/core';
 
 import 'rxjs/add/operator/toPromise';
 import {ServerConnectService} from "../server-connect-service/server-connect.service";
+import {server_auth_url} from "../common/project";
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
     // this._dialogService.openPrompt( {message: 'This is how simple it is to create a prompt with this wrapper service. Prompt something.', disableClose: true})
 
 
-    this._postService.POST('/auth/login',{email:emailElement, password:passElement})
+    this._postService.POST(server_auth_url, '/auth/login',{email:emailElement, password:passElement})
       .subscribe(data=>{
         console.log(data);
         if (data.code == 0) { this._router.navigate(['/1']); }

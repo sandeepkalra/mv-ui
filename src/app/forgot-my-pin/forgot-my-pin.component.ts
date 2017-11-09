@@ -4,6 +4,7 @@ import { TdDialogService, TdLoadingService } from '@covalent/core';
 
 import 'rxjs/add/operator/toPromise';
 import {ServerConnectService} from "../server-connect-service/server-connect.service";
+import {server_auth_url} from "../common/project";
 
 @Component({
   selector: 'app-forgot-my-pin',
@@ -23,7 +24,7 @@ export class ForgotMyPinComponent implements OnInit {
 
   ResetPin(email, password, new_digit_lock) {
     console.log("ResetPin");
-    this._postService.POST("/auth/reset_digit_lock",{
+    this._postService.POST(server_auth_url, "/auth/reset_digit_lock",{
       "email":email,
       "password":password,
       "new_digit_lock":new_digit_lock

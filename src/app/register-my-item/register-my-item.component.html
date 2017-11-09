@@ -1,3 +1,92 @@
-<p>
-  register-my-item works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12"></div>
+  </div>
+  <div class="row">
+    <div class="col-7"></div>
+    <div class="col-4">
+      <md-card>
+        <md-card-title> Add New Item</md-card-title>
+        <md-card-content>
+          <form #userForm="ngForm" layout="column">
+
+            <md-input-container>
+              <input mdInput
+                     #itemElement
+                     #itemControl="ngModel"
+                     type="text"
+                     placeholder="Item Name"
+                     [(ngModel)]="itemName"
+                     name="name"
+                     maxlength="30"
+                     required>
+            </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="itemControl.pristine" class="tc-red-600">
+                  <span [hidden]="!itemControl.hasError('required')">Required</span>
+                </span>
+            </md-hint>
+            <md-input-container>
+              <input mdInput
+                     #aliasElement
+                     #aliasControl="ngModel"
+                     type="text"
+                     placeholder="Alias Name"
+                     [(ngModel)]="aliasName"
+                     name="alias"
+                     maxlength="30"
+              >
+            </md-input-container>
+
+
+            <md-input-container>
+              <input mdInput
+                     #manufacturerElement
+                     #manufacturerControl="ngModel"
+                     type="text"
+                     placeholder="Manufacturer Name"
+                     [(ngModel)]="manufacturerName"
+                     name="manufacturer"
+                     maxlength="30"
+                     required>
+            </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="manufacturerControl.pristine" class="tc-red-600">
+                  <span [hidden]="!manufacturerControl.hasError('required')">Required</span>
+                </span>
+            </md-hint>
+
+
+              <label>Category</label>
+              <td-chips color="accent"
+                        [items]="filteredObjects"
+                        [(ngModel)]="objectsModel"
+                        placeholder="Enter autocomplete strings"
+                        (inputChange)="filterObjects($event)"
+                        requireMatch>
+                <ng-template td-chip let-chip="chip">
+                  <mat-icon>location_city</mat-icon> {{chip.city}}, (Pop: {{chip.population}})
+                </ng-template>
+                <ng-template td-autocomplete-option let-option="option">
+                  <div layout="row" layout-align="start center">
+                    <mat-icon>location_city</mat-icon> {{option.city}}
+                  </div>
+                </ng-template>
+              </td-chips>
+
+
+
+            <button [disabled]="!userForm.form.valid" color="primary"
+                    md-raised-button (click)="RegisterItem()">Add New Item
+            </button>
+          </form>
+
+
+        </md-card-content>
+      </md-card>
+
+
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>

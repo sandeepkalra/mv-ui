@@ -4,6 +4,7 @@ import { TdDialogService, TdLoadingService } from '@covalent/core';
 
 import 'rxjs/add/operator/toPromise';
 import {ServerConnectService} from "../server-connect-service/server-connect.service";
+import {server_auth_url} from "../common/project";
 
 @Component({
   selector: 'app-signup-complete',
@@ -22,7 +23,7 @@ export class SignupCompleteComponent implements OnInit {
   }
 
   ProcessSignupCompleteForm(email:string, token:string) {
-    this._postService.POST('/auth/validate_token',
+    this._postService.POST(server_auth_url, '/auth/validate_token',
       {email: email,
         token: token
       })

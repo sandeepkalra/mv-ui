@@ -4,6 +4,7 @@ import { TdDialogService, TdLoadingService } from '@covalent/core';
 
 import 'rxjs/add/operator/toPromise';
 import {ServerConnectService} from "../server-connect-service/server-connect.service";
+import {server_auth_url} from "../common/project";
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -29,7 +30,7 @@ export class SignupComponent implements OnInit {
     if (termsElement == false) {
       this._dialogService.openPrompt({message: "Please accept the terms to proceed."})
     } else {
-      this._postService.POST('/auth/signup',
+      this._postService.POST(server_auth_url, '/auth/signup',
           {email: emailElement,
             password: passElement,
             date_of_birth: new Date(DOBElement),
