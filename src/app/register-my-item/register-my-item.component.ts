@@ -1,76 +1,98 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { TdDialogService, TdLoadingService } from '@covalent/core';
+
+import 'rxjs/add/operator/toPromise';
+import {ServerConnectService} from "../server-connect-service/server-connect.service";
+import {server_auth_url, server_item_url} from "../common/project";
+import {Globals} from "../globals/globals";
+
 @Component({
   selector: 'app-register-my-item',
   templateUrl: './register-my-item.component.html',
   styleUrls: ['./register-my-item.component.scss']
 })
 export class RegisterMyItemComponent implements OnInit {
-  filteringAsync: boolean = false;
-  filteredAsync: string[];
-  objects: any[] = [
-    {id: 1, city: 'San Diego', population: '4M'},
-    {id: 2, city: 'San Franscisco', population: '6M'},
-    {id: 3, city: 'Los Angeles', population: '5M'},
-    {id: 4, city: 'Austin', population: '3M'},
-    {id: 5, city: 'New York City', population: '10M'},
+  category = '';
+  itemName = '';
+  disabled: boolean = false;
+
+  constructor(private g:Globals,
+              private _router: Router,
+              private _route: ActivatedRoute,
+              private _dialogService: TdDialogService,
+              private _loadingService: TdLoadingService,
+              private _postService:ServerConnectService) {
+
+    this.manufacturers.concat(this.g.manufacturer_list);
+    this.categories.concat(this.g.categories);
+    console.log("manufacturers", this.manufacturers);
+    console.log("categories", this.categories);
+  }
+
+  manufacturers : string[] = [
+    'Apple',
+    'Microsoft',
+    'Google',
+    'Facebook',
+    'ATT',
+    'Sprint',
+    'T-Mobile',
+    'Yahoo',
+    'Citibank',
+    'Bank Of America'
   ];
 
-  strings: string[] = [
-    'stepper',
-    'expansion-panel',
-    'markdown',
-    'highlight',
-    'loading',
-    'media',
-    'chips',
-    'http',
-    'json-formatter',
-    'pipes',
-    'need more?',
+  categories : string[] = [
+    'Bank',
+    'Software Company',
+    'Software',
+    'Builder',
+    'Building',
+    'Country',
+    'Website',
+    'Services'
   ];
 
-  asyncModel: string[] = this.strings.slice(0, 2);
-
-  filteredObjects: string[];
-
-  objectsModel: string[] = this.objects.slice(0, 4);
 
   ngOnInit(): void {
-    this.filterObjects('');
   }
 
-  filterObjects(value: string): void {
-    this.filteredObjects = this.objects.filter((obj: any) => {
-      if (value) {
-        return obj.city.toLowerCase().indexOf(value.toLowerCase()) > -1;
-      } else {
-        return false;
-      }
-    }).filter((filteredObj: any) => {
-      return this.objectsModel ? this.objectsModel.indexOf(filteredObj) < 0 : true;
-    });
-  }
-
-
-
-
-
-  filterAsync(value: string): void {
-    this.filteredAsync = undefined;
-    if (value) {
-      this.filteringAsync = true;
-      // Timeout isn't actually needed here, only added for demo to simulate async behavior
-      setTimeout(() => {
-        this.filteredAsync = this.strings.filter((item: any) => {
-          return item.toLowerCase().indexOf(value.toLowerCase()) > -1;
-        }).filter((filteredItem: any) => {
-          return this.asyncModel ? this.asyncModel.indexOf(filteredItem) < 0 : true;
-        });
-        this.filteringAsync = false;
-      }, 2000);
+  RegisterItem(item, manufacturer, c, subc){
+    // 1st . Search manufacturer, category in globals, add this to list
+    if (this.manufacturers.find(e => e.toUpperCase() == manufacturer.toUpperCase()) == null) {
+      this.manufacturers.concat(manufacturer);
+    } else {
+      console.log("manufactured existed", manufacturer)
     }
+
+    if (this.categories.find(e => e.toUpperCase() == c.toUpperCase()) == null) {
+      this.categories.concat(c);
+    } else {
+      console.log("category existed", c)
+    }
+
+    // 2nd . Notify Server.
+    this._postService.POST(server_item_url, "/item/add_item", {
+        "item": {
+          "name": item,
+          "manufacturer": manufacturer,
+          "category": c,
+          "sub_category": subc
+        },
+        "cookie" : ""
+    }).subscribe( data =>{
+      console.log("/item/add_item", data);
+      if (data.code == 0) {
+        this.g.manufacturer_list = this.manufacturers;
+        this.g.categories = this.categories;
+      } else {
+        this._dialogService.openAlert({title: 'Error logging in.', message: " msg : " + data.message});
+      }
+      });
   }
-
-
+  manufacturerNameModel = '';
+  categoryNameModel= '';
+  subcategoryNameModel= '';
 
 }

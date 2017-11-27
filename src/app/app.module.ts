@@ -11,15 +11,18 @@ import { CovalentHttpModule, IHttpInterceptor } from '@covalent/http';
 import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 
-import { MdSnackBarModule, MdIconModule, MdListModule, MdTooltipModule, MdCardModule, MdButtonModule,
-  MdToolbarModule, MdInputModule, MdSlideToggleModule, MdMenuModule } from '@angular/material';
+import {
+  MdSnackBarModule, MdIconModule, MdListModule, MdTooltipModule, MdCardModule, MdButtonModule,
+  MdToolbarModule, MdInputModule, MdSlideToggleModule, MdMenuModule, MAT_ELEMENTS_SELECTOR
+} from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { RequestInterceptor } from '../config/interceptors/request.interceptor';
 import { MOCK_API } from '../config/api.config';
 import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
 import {
-  CovalentChipsModule, CovalentDialogsModule, CovalentLayoutModule, CovalentLoadingModule, CovalentMenuModule,
+  CovalentChipsModule, CovalentDialogsModule, CovalentExpansionPanelModule, CovalentLayoutModule, CovalentLoadingModule,
+  CovalentMenuModule,
   CovalentNotificationsModule,
   CovalentSearchModule, CovalentStepsModule
 } from '@covalent/core';
@@ -52,6 +55,7 @@ export function getAPI(): string {
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
+
     CovalentHttpModule.forRoot({
       interceptors: [{
         interceptor: RequestInterceptor, paths: ['**'],
@@ -77,7 +81,8 @@ export function getAPI(): string {
     CovalentLoadingModule,
     CovalentMenuModule,
     CovalentStepsModule,
-    CovalentNotificationsModule
+    CovalentNotificationsModule,
+    CovalentExpansionPanelModule,
   ], // modules needed to run this module
   providers: [
     httpInterceptorProviders,

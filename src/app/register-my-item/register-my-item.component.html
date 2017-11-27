@@ -26,17 +26,6 @@
                   <span [hidden]="!itemControl.hasError('required')">Required</span>
                 </span>
             </md-hint>
-            <md-input-container>
-              <input mdInput
-                     #aliasElement
-                     #aliasControl="ngModel"
-                     type="text"
-                     placeholder="Alias Name"
-                     [(ngModel)]="aliasName"
-                     name="alias"
-                     maxlength="30"
-              >
-            </md-input-container>
 
 
             <md-input-container>
@@ -45,8 +34,8 @@
                      #manufacturerControl="ngModel"
                      type="text"
                      placeholder="Manufacturer Name"
-                     [(ngModel)]="manufacturerName"
-                     name="manufacturer"
+                     [(ngModel)]="manufacturerNameModel"
+                     name="name"
                      maxlength="30"
                      required>
             </md-input-container>
@@ -57,31 +46,57 @@
             </md-hint>
 
 
-              <label>Category</label>
-              <td-chips color="accent"
-                        [items]="filteredObjects"
-                        [(ngModel)]="objectsModel"
-                        placeholder="Enter autocomplete strings"
-                        (inputChange)="filterObjects($event)"
-                        requireMatch>
-                <ng-template td-chip let-chip="chip">
-                  <mat-icon>location_city</mat-icon> {{chip.city}}, (Pop: {{chip.population}})
-                </ng-template>
-                <ng-template td-autocomplete-option let-option="option">
-                  <div layout="row" layout-align="start center">
-                    <mat-icon>location_city</mat-icon> {{option.city}}
-                  </div>
-                </ng-template>
-              </td-chips>
 
+
+            <md-input-container>
+              <input mdInput
+                     #categoryElement
+                     #categoryControl="ngModel"
+                     type="text"
+                     placeholder="Category Name"
+                     [(ngModel)]="categoryNameModel"
+                     name="name"
+                     maxlength="30"
+                     required>
+            </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="categoryControl.pristine" class="tc-red-600">
+                  <span [hidden]="!categoryControl.hasError('required')">Required</span>
+                </span>
+            </md-hint>
+
+
+
+
+
+            <md-input-container>
+              <input mdInput
+                     #subcategoryElement
+                     #subcategoryControl="ngModel"
+                     type="text"
+                     placeholder="Sub Category Name"
+                     [(ngModel)]="subcategoryNameModel"
+                     name="name"
+                     maxlength="30"
+                     required>
+            </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="subcategoryControl.pristine" class="tc-red-600">
+                  <span [hidden]="!subcategoryControl.hasError('required')">Required</span>
+                </span>
+            </md-hint>
 
 
             <button [disabled]="!userForm.form.valid" color="primary"
-                    md-raised-button (click)="RegisterItem()">Add New Item
+                    md-raised-button
+                    (click)="RegisterItem(itemName,
+                    manufacturerNameModel,
+                    categoryNameModel,
+                    subcategoryNameModel)">Add New Item
             </button>
+
+
           </form>
-
-
         </md-card-content>
       </md-card>
 

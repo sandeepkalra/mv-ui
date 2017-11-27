@@ -20,11 +20,16 @@ export class LoggedInComponent implements OnInit {
     this._postService.POST(server_item_url, "/item/lookup_list", {
         "cookie":"",
         "need_manufacturer_list": true,
-        "need_category_list":true }).subscribe(
+        "need_category_list":true,
+        "need_sub_category_list":true
+    }).subscribe(
       data => {
         if (data.code == 0) {
-            console.log(data.response)
+            console.log("lookup_list", data);
+            this.globals.manufacturer_list = data.response.manufacturer_list;
+            this.globals.categories = data.response.categories;
         }  else {
+          console.log("lookup_list", data);
           this._dialogService.openAlert({title: "Error loading", message: data.message})
         }
 
