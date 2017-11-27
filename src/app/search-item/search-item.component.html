@@ -19,11 +19,10 @@
                      [(ngModel)]="itemName"
                      name="name"
                      maxlength="30"
-                     required>
+                     >
             </md-input-container>
             <md-hint align="start">
                 <span [hidden]="itemControl.pristine" class="tc-red-600">
-                  <span [hidden]="!itemControl.hasError('required')">Required</span>
                 </span>
             </md-hint>
 
@@ -37,11 +36,10 @@
                      [(ngModel)]="manufacturerNameModel"
                      name="name"
                      maxlength="30"
-                     required>
+                     >
             </md-input-container>
             <md-hint align="start">
                 <span [hidden]="manufacturerControl.pristine" class="tc-red-600">
-                  <span [hidden]="!manufacturerControl.hasError('required')">Required</span>
                 </span>
             </md-hint>
 

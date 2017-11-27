@@ -10,7 +10,8 @@ import {Globals} from "../globals/globals";
 @Component({
   selector: 'app-search-item',
   templateUrl: './search-item.component.html',
-  styleUrls: ['./search-item.component.scss']
+  styleUrls: ['./search-item.component.scss'],
+  providers:[Globals]
 })
 export class SearchItemComponent implements OnInit {
 
