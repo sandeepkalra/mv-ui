@@ -1,0 +1,105 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12"></div>
+  </div>
+  <div class="row">
+    <div class="col-7"></div>
+    <div class="col-4">
+      <md-card>
+        <md-card-title> Search Item</md-card-title>
+        <md-card-content>
+          <form #userForm="ngForm" layout="column">
+
+            <md-input-container>
+              <input mdInput
+                     #itemElement
+                     #itemControl="ngModel"
+                     type="text"
+                     placeholder="Item Name"
+                     [(ngModel)]="itemName"
+                     name="name"
+                     maxlength="30"
+                     required>
+            </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="itemControl.pristine" class="tc-red-600">
+                  <span [hidden]="!itemControl.hasError('required')">Required</span>
+                </span>
+            </md-hint>
+
+
+            <md-input-container>
+              <input mdInput
+                     #manufacturerElement
+                     #manufacturerControl="ngModel"
+                     type="text"
+                     placeholder="Manufacturer Name"
+                     [(ngModel)]="manufacturerNameModel"
+                     name="name"
+                     maxlength="30"
+                     required>
+            </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="manufacturerControl.pristine" class="tc-red-600">
+                  <span [hidden]="!manufacturerControl.hasError('required')">Required</span>
+                </span>
+            </md-hint>
+
+
+
+
+            <md-input-container>
+              <input mdInput
+                     #categoryElement
+                     #categoryControl="ngModel"
+                     type="text"
+                     placeholder="Category Name"
+                     [(ngModel)]="categoryNameModel"
+                     name="name"
+                     maxlength="30"
+                     >
+            </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="categoryControl.pristine" class="tc-red-600">
+                </span>
+            </md-hint>
+
+
+
+
+
+            <md-input-container>
+              <input mdInput
+                     #subcategoryElement
+                     #subcategoryControl="ngModel"
+                     type="text"
+                     placeholder="Sub Category Name"
+                     [(ngModel)]="subcategoryNameModel"
+                     name="name"
+                     maxlength="30"
+                     >
+            </md-input-container>
+            <md-hint align="start">
+                <span [hidden]="subcategoryControl.pristine" class="tc-red-600">
+                </span>
+            </md-hint>
+
+
+            <button [disabled]="!userForm.form.valid" color="primary"
+                    md-raised-button
+                    (click)="SearchItem(itemName,
+                    manufacturerNameModel,
+                    categoryNameModel,
+                    subcategoryNameModel)">Search Item
+            </button>
+
+
+          </form>
+        </md-card-content>
+      </md-card>
+
+
+    </div>
+    <div class="col-1"></div>
+  </div>
+</div>

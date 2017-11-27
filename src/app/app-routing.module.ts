@@ -23,6 +23,7 @@ import {UsersComponent} from "./users/users.component";
 import {ForgotPasswordAndPinComponent} from "./forgot-password-and-pin/forgot-password-and-pin.component";
 import { ChangeOldPasswordComponent } from './change-old-password/change-old-password.component';
 import { ChangeOldPinComponent } from './change-old-pin/change-old-pin.component';
+import {SearchItemComponent} from './search-item/search-item.component'
 
 const routes: Routes = [
   {
@@ -32,8 +33,8 @@ const routes: Routes = [
       { path: 'signup', component: SignupComponent},
       { path: 'login', component: LoginComponent},
       { path: 'forgot-password', component: ForgotPasswordComponent},
-      { path:'forgot-my-pin', component: ForgotMyPinComponent},
-      { path:'forgot-password-and-pin', component:ForgotPasswordAndPinComponent},
+      { path: 'forgot-my-pin', component: ForgotMyPinComponent},
+      { path: 'forgot-password-and-pin', component:ForgotPasswordAndPinComponent},
       { path: '', redirectTo: 'login', pathMatch:'full' }
   ]},
   {
@@ -44,6 +45,7 @@ const routes: Routes = [
       { path: 'my-dashboard', component:DashboardComponent},
       { path: 'logout', component: LogoutComponent},
       { path: 'search' , component: SearchVoicesComponent},
+      { path: 'search-item', component: SearchItemComponent },
       { path: 'add-my-voice' , component: RegisterMyVoiceComponent},
       { path: 'add-items' , component: RegisterMyItemComponent},
       { path: 'manage-items' , component: ManageItemsComponent},
@@ -101,4 +103,5 @@ export const routedComponents: any[] = [
   DashboardComponent,
   HeaderComponent,
   FooterComponent,
+  SearchItemComponent,
 ];

@@ -46,6 +46,7 @@ export function getAPI(): string {
   declarations: [
     AppComponent,
     routedComponents,
+
   ], // directives, components, and pipes owned by this NgModule
   imports: [
     AppRoutingModule,
