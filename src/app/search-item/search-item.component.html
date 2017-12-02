@@ -99,5 +99,26 @@
 
     </div>
     <div class="col-1"></div>
+    <div *ngIf="items.length > 0">
+
+      <table>
+        <tr>
+          <th> NAME </th>
+          <th> MANUFACTURER </th>
+          <th> CREATED ON </th>
+          <th> CATEGORY </th>
+          <th> WRITE REVIEW </th>
+          <th> READ REVIEWS </th>
+        </tr>
+      <tr *ngFor="let item of items">
+        <td>{{item.name}}</td>
+        <td>{{item.manufacturer}}</td>
+        <td>{{item.created_on}}</td>
+        <td>{{item.category}}</td>
+        <td> <button md-raised-button (click)="WriteReview(item)"> Write Review </button> </td>
+        <td> <button md-raised-button (click)="ReadReview(item)"> Read Review </button></td>
+      </tr>
+      </table>
+    </div>
   </div>
 </div>

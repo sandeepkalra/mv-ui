@@ -15,7 +15,6 @@ import {LoggedInComponent} from "./logged-in/logged-in.component";
 import {LogoutComponent} from "./logout/logout.component";
 import {TermsAndConditionsComponent} from "./terms-and-conditions/terms-and-conditions.component";
 import {FaqsComponent} from "./faqs/faqs.component";
-import {SearchVoicesComponent} from "./search-voices/search-voices.component";
 import {ManageItemsComponent} from "./manage-items/manage-items.component";
 import {RegisterMyItemComponent} from "./register-my-item/register-my-item.component";
 import {RegisterMyVoiceComponent} from "./register-my-voice/register-my-voice.component";
@@ -24,6 +23,8 @@ import {ForgotPasswordAndPinComponent} from "./forgot-password-and-pin/forgot-pa
 import { ChangeOldPasswordComponent } from './change-old-password/change-old-password.component';
 import { ChangeOldPinComponent } from './change-old-pin/change-old-pin.component';
 import {SearchItemComponent} from './search-item/search-item.component'
+import {AddReviewComponent} from "./add-review/add-review.component";
+import {ReadReviewComponent} from "./read-review/read-review.component";
 
 const routes: Routes = [
   {
@@ -44,7 +45,6 @@ const routes: Routes = [
       { path: 'home', component: MainComponent},
       { path: 'my-dashboard', component:DashboardComponent},
       { path: 'logout', component: LogoutComponent},
-      { path: 'search' , component: SearchVoicesComponent},
       { path: 'search-item', component: SearchItemComponent },
       { path: 'add-my-voice' , component: RegisterMyVoiceComponent},
       { path: 'add-items' , component: RegisterMyItemComponent},
@@ -52,6 +52,8 @@ const routes: Routes = [
       { path: 'logout', component: LogoutComponent},
       { path: 'change-old-password', component: ChangeOldPasswordComponent},
       { path: 'change-old-pin', component: ChangeOldPinComponent},
+      { path: 'add-review', component: AddReviewComponent},
+      { path: 'read-review', component: ReadReviewComponent},
       { path: '', redirectTo: 'home', pathMatch:'full'}
 
   ]},
@@ -90,7 +92,6 @@ export const routedComponents: any[] = [
   ChangeOldPasswordComponent,
   ChangeOldPinComponent,
   NotLoggedInYetComponent,
-  SearchVoicesComponent,
   ManageItemsComponent,
   RegisterMyItemComponent,
   RegisterMyVoiceComponent,
@@ -104,4 +105,6 @@ export const routedComponents: any[] = [
   HeaderComponent,
   FooterComponent,
   SearchItemComponent,
+  AddReviewComponent,
+  ReadReviewComponent,
 ];
